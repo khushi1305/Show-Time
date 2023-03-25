@@ -1,0 +1,34 @@
+<div class="contain-fluid mt-5 p-5">
+    <form [formGroup]="searchForm" (ngSubmit)="searchMovie()">
+        <div class="row">
+            <div class="mb-3 col-lg-10">
+                <input type="text" class="form-control" formControlName="searchInput" 
+                  placeholder="Search movie here">
+            </div>
+            <div class="col-lg-2">
+                <button class="btn btn-md">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="p-4" *ngIf="!searchResults">
+        <div class="col-lg-4 text-white mb-4" *ngFor="let movie of trendingMovies">
+            <span class="cursor-pointer"> {{ movie }} </span>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-4" *ngFor="let search of searchResponse">
+            <div class="row cursor-pointer" [routerLink]="['/movie',search.id]">
+                <div class="col-lg-3 mt-4 mb-4" *ngIf="search.poster_path">
+                    <img src="https://image.tmdb.org/t/p/original/{{search.poster_path}}" alt=""
+                    >
+                </div>
+                <div class="col-lg-9 mt-4 mb-4">
+                    <h6 class="text-white">{{ search.original_title }}</h6>
+                    <!-- <p>{{ search.overview }}</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
