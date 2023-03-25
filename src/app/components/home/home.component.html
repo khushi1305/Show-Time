@@ -6,7 +6,8 @@
             *ngFor="let banner of bannerResponse; let i=index"
             [ngClass]="{active: i===1}">
             <div class="d-block w-100 img-fg">
-                <img src="https://image.tmdb.org/t/p/original/{{banner.backdrop_path}}" class="d-block w-100" alt="...">
+                <img src="https://image.tmdb.org/t/p/original/{{banner.backdrop_path}}" 
+                class="d-block w-100" alt="..." [routerLink]="['/movie',banner.id]">
             </div>
             <div class="carousel-caption d-none d-md-block">
               <h2>{{ banner.original_title }}</h2>
